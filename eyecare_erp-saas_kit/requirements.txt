@@ -1,0 +1,6 @@
+cryptography==2.1.4
+paramiko==2.7.2
+ERPpeek==1.7.1
+python-stdnum==1.16
+
+

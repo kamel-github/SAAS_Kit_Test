@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="db_size_control_res_config_settings_view" model="ir.ui.view">
+            <field name="name">db.size.control.res.config.settings.view</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="100"/>
+            <field name="inherit_id" ref="saas_base.res_config_settings_view_form1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div/div[@name='branding']" position="after">
+                    <div class="app_settings_block">
+                        <h2>Database Space Control</h2>
+                        <div class="row mt16 o_settings_container" name="space_control">
+                            <group>
+                                <group>
+                                    <field name="tenant_db_size"/>
+                                    <field name="tenant_filestore_size"/>
+                                    <field name="db_size_usage_product" domain="[('type', '=', 'service')]"/>
+                                    <field name="filestore_size_usage_product" domain="[('type', '=', 'service')]"/>
+                                    <field name="filestore_path"/>
+                                    <field name="flush_storage_history"/>
+                                </group>
+                            </group>
+                        </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                </xpath>
+            </field>
+        </record>
+            <menuitem id="saas_service" name="My Service" sequence="1" web_icon="pragmatic_tenant_db_size_control,static/description/icon.png"/>
+    </data>
+</odoo>

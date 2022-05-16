@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  To view the number of users and payment term in portal invoice   -->
+    <template id="report_invoice_document_users" name="Invoice Users"
+              inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='informations']/div[5]" position="after">
+            <div class="col-auto mw-100 mb-2" t-if="o.invoice_term_id" name="payment_term">
+                <strong>Payment Term</strong>
+                <h6 class="m-0" t-field="o.invoice_term_id"/>
+            </div>
+        </xpath>
+        <xpath expr="//div/table/thead/tr/th[2]" position="after">
+            <th class="text-right">Users</th>
+        </xpath>
+        <xpath expr="//div/table/tbody/t/tr/t/td[2]" position="after">
+            <td class="text-right" id="no_of_users">
+                <span t-field="o.no_of_users"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

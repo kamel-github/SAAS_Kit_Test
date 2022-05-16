@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tenant_volume_history,access_tenant_volume_history,model_tenant_volume_history,base.group_user,1,1,1,1
+access_purchase_additional_space,access_purchase_additional_space,model_purchase_additional_space,base.group_user,1,1,1,1

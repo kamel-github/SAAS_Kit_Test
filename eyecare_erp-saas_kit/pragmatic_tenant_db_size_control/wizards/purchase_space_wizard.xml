@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+         <record id="purchase_add_space_form" model="ir.ui.view">
+            <field name="name">purchase.space.form</field>
+            <field name="model">purchase.additional.space</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Space">
+                    <group>
+                        <field name="tenant_id"/>
+                        <field name="additional_db_size"/>
+                        <field name="additional_filestore_size"/>
+                    </group>
+                </form>
+            </field>
+         </record>
+
+         <record id="purchase_additional_space_action" model="ir.actions.act_window">
+            <field name="name">Purchase Additional Space</field>
+            <field name="res_model">purchase.additional.space</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

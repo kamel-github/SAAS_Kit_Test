@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_import_module,import.module,model_import_module,base.group_user,1,1,1,1
+access_message_wizard,message.wizard,model_message_wizard,base.group_user,1,1,1,1
+access_update_rc_path,update.rc.path,model_update_rc_path,base.group_user,1,1,1,1

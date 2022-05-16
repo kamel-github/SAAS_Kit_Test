@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+         <record model="ir.ui.view" id="tenant_installed_module_tree">
+            <field name="name">Tenant Installed Modules tree View</field>
+            <field name="model">installed.modules.on.tenant</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" string="Module Info">
+                    <field name="bool_chk" widget="checkbox"/>
+                    <field name="module_name" />
+                    <field name="technical_name"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tenant_uninstalled_module_tree">
+            <field name="name">Tenant UnInstalled Modules tree View</field>
+            <field name="model">uninstalled.modules.on.tenant</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" edit="true" string="Uninstalled Module Info">
+                    <field name="bool_checkbox" widget="checkbox"/>
+                    <field name="module_name"   />
+                    <field name="technical_name"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+           <record model="ir.ui.view" id="saas_tenant_list_module_form">
+            <field name="name">Tenant Modules View</field>
+            <field name="model">tenant.module.list</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string=" Tenant Module Info">
+                    <sheet>
+                     <group colspan="4" col="2">
+                        <field name="tenant_db"/>
+                     </group>
+                        <notebook>
+                            <page string="Installed Modules">
+                                <button string="Uninstall" type="object" name="module_activity" context="{'action': 'Uninstall'}" class="oe_highlight"  />
+                                <field name="installed_moduels" class="custom-control custom-checkbox"/>
+                            </page>
+                            <page string="Uninstalled Modules">
+                                <button string="Install" type="object" name="module_activity" context="{'action': 'Install'}" class="oe_highlight"  />
+                                <field name="uninstalled_modules"/>
+                            </page>
+                        </notebook>
+                        <footer>
+
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+         <record model="ir.actions.act_window" id="tenant_db_modules_list_action">
+            <field name="name">Tenant Module Install/Uninstall</field>
+            <field name="res_model">tenant.module.list</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help">Module Installation in Tenant Database.</field>
+         </record>
+                <record id="saas_tenant_module_list_form" model="ir.ui.view">
+			<field name="name">saas.tenant.module.list.form</field>
+			<field name="model">tenant.database.list</field>
+			<field name="type">form</field>
+            <field name="priority" eval="101" />
+			<field name="inherit_id" ref="saas_base.saas_admin_dblist_form" />
+			<field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <field name="isterminated"  invisible="1"/>
+                    <field name="isdeactivated"  invisible="1"/>
+                    <button type="action"
+                            attrs="{'invisible': ['|', ('isdeactivated', '=', True),('isterminated', '=', True)]}"
+                            help="You can Install/Uninstall modules only for Active, Grace Period Over and Expired stages"
+                            context="{'current_id': active_id}"
+                            string="Install/Uninstall Modules"
+                            name="%(Bare_Tenant_Module_Installation.tenant_db_modules_list_action)d"
+                            class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

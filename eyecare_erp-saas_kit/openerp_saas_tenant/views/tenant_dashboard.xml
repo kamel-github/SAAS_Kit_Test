@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<data>
+         <record id="inherit_tree_saas_service" model="ir.ui.view">
+			<field name="name">saas.service.tree.inherit</field>
+			<field name="model">saas.service</field>
+			<field name="priority" eval="101" />
+			<field name="inherit_id" ref="openerp_saas_tenant.saas_service_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='balance_user_count']" position="after">
+<!--                    <field name="is_exceed" attrs="{'invisible':True}"/>-->
+<!--					<field name="tenant_db_size"/>-->
+<!--                    <field name="tenant_filestore_size"/>-->
+<!--                    <field name="total_db_size_used"/>-->
+<!--                    <field name="total_filestore_size_used"/>-->
+                </xpath>
+            </field>
+         </record>
+    </data>
+</odoo>

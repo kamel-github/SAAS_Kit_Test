@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template inherit_id="saas_product.saas_tenants"  id="saas_tenants_inherit" name="DB Size control">
+		 <xpath expr="//table/tbody/h3/tr[4]" position='after'>
+             <tr>
+                <td>
+                    Database size(GB) :
+                </td>
+                <td>
+                    <span id="db_size">
+                        <t t-esc="tenant.tenant_db_size"/>
+                    </span>
+                    &#160;&#160;&#160;&#160;
+                    <a id="show_db_size" href="#" title="It takes 30 Mins approx. to update space purchase to tenant database">Add more space</a>
+                    <span id="save_db_size" style="margin-left:40px; ">
+                    <p id="add_text_id" style="margin-top:-19px; margin-left:40px;">Enter size in GB</p>
+                    <span id='update_db_size'>
+                        <t t-esc="tenant.tenant_db_size" />
+                    </span>
+                    &#160;&#160;+&#160;&#160;
+                    <input type="Number" min="1" value="1" id="num_db_size" />
+                    &#160;&#160;&#160;&#160;
+                    <input type="button" value="Confirm" id="confirm_db_size"
+                        class='btncolor' />
+                    &#160; or &#160;
+                    <a class="db_cancel" href="#">Cancel</a>
+                    </span>
+                    <br></br>
+                    <span id="db_alert" style="color:red" type="hidden">Database size must be greater than 0</span>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    Filestore size(GB) :
+                </td>
+                <td>
+                    <span id="filestore_size">
+                        <t t-esc="tenant.tenant_filestore_size"/>
+                    </span>
+                    &#160;&#160;&#160;&#160;
+                    <a id="show_filestore_size" href="#" title="It takes 30 Mins approx. to update space purchase to tenant database">Add more space</a>
+                    <span id="save_filestore_size" style="margin-left:40px; ">
+                    <p id="add_text_id" style="margin-top:-19px; margin-left:40px;">Enter size in GB</p>
+                    <span id='update_filestore_size'>
+                        <t t-esc="tenant.tenant_filestore_size" />
+                    </span>
+                    &#160;&#160;+&#160;&#160;
+                    <input type="Number" min="1" value="1" id="num_filestore_size" />
+                    &#160;&#160;&#160;&#160;
+                    <input type="button" value="Confirm" id="confirm_filestore_size"
+                        class='btncolor' />
+                    &#160; or &#160;
+                    <a class="filestore_cancel" href="#">Cancel</a>
+                    </span>
+                    <br></br>
+                    <span id="filestore_alert" style="color:red" type="hidden">Filestore size must be greater than 0</span>
+                 </td>
+            </tr>
+         </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template inherit_id="website_sale.cart" id="website_sale_cart_inherit" name="Cart">
+        <xpath expr="//t/div/div/div/div/div/a[hasclass('btn-secondary')]" position='replace'>
+        <a></a>
+        </xpath>
+    </template>
+</odoo>

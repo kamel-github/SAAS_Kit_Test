@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record id="view_order_form_saas_inherit3" model="ir.ui.view">
+            <field name="name">sale.order.inheirt.form.view</field>
+            <field name="model">sale.order</field>
+<!--            <field name="priority" eval="100"/>-->
+            <field name="inherit_id" ref="saas_sale.view_order_form_saas_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lang_code']" position="after">
+                    <field name="billing"/>
+                </xpath>
+            </field>
+       </record>
+
+        <record id="view_reccuring_form_saas_inherit3" model="ir.ui.view">
+            <field name="name">sale.recurring.inheirt.form.view</field>
+            <field name="model">sale.recurring.orders.agreement</field>
+<!--            <field name="priority" eval="100"/>-->
+            <field name="inherit_id" ref="saas_recurring.view_sale_recurring_orders_agreement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='current_users']" position="after">
+                    <field name="billing"/>
+                </xpath>
+            </field>
+       </record>
+
+    </odoo>
