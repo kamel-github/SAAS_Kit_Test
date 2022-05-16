@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--	  <template id="saas_db_backups" inherit_id="saas_product.saas_dbs">-->
+    <!--		  <xpath expr="//table[@class='table-condensed table']" position='replace'>-->
+    <!--			 <tbody>-->
+    <!--				<tr>-->
+    <!--					<th><h3>Active Instances</h3></th>-->
+    <!--				</tr>-->
+    <!--				<tr t-foreach="active" t-as="db">-->
+    <!--					<td>-->
+    <!--						<a t-attf-href="/apps/db_details?id=#{db.id}" >-->
+    <!--							<t t-esc="db.name" />-->
+    <!--						</a>-->
+    <!--						<a t-attf-href="/apps/db_backup_files?id=#{db.id}" >-->
+    <!--							<button type="button" class="btn btn-primary btn-sm pull-right oe_create_customer_button_form"> Db Backups </button>-->
+    <!--						</a>-->
+    <!--					</td>-->
+    <!--				</tr>-->
+    <!--			 </tbody>-->
+    <!--			  <br/>-->
+    <!--		  </xpath>-->
+    <!--	  </template>-->
+
+    <template inherit_id="saas_product.saas_tenants" id="saas_tenants_inherit" name="Database Backup Details">
+        <xpath expr="//table[2]" position='replace'>
+            <ul class="nav nav-tabs" id="tabs">
+                <li class="active" data-type="yearly">
+                    <a id="year" data-toggle="tab" href="#users" class="nav-link active"
+                       role="tab">Users
+                    </a>
+                </li>
+                <li class="nav-item" data-type="monthly">
+                    <a id="month" data-toggle="tab" href="#backups" class="nav-link"
+                       role="tab">DB Backups
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <table id="backups" class="table tab-pane fade" style="white-space:nowrap">
+                    <thead>
+                        <t t-if="backup_files==True">
+                            <tr>
+                                <th>File Name</th>
+                                <th>Creation Date</th>
+                            </tr>
+                        </t>
+                        <t t-if="backup_files==False">
+                            <tr>
+                                <th>No backups found</th>
+                            </tr>
+                        </t>
+                    </thead>
+                    <tbody>
+                        <t t-if="backup_files==True">
+                            <t t-foreach="backups" t-as="backup">
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <a class="align-items-center oe_attachments py-1 px-2"
+                                               t-attf-href="/download/db_backup?id=#{backup['download_path']}">
+                                                <t t-esc="backup['file']"/>
+                                            </a>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <t t-esc="backup['createdate']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+
+                    </tbody>
+                </table>
+
+                <table id="users" class="table tab-pane fade show active" style="white-space:nowrap">
+                    <tbody>
+                        <t t-foreach="users" t-as="user">
+                            <tr>
+                                <td>
+                                    <span>
+                                        <i class="fa fa-circle" style="color: green; "></i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <t t-esc="user['name']"/>
+                                </td>
+                                <td>
+                                    <t t-esc="user['login']"/>
+                                </td>
+                                <td>
+
+                                    <t t-if="user['sub_user']">
+                                        <span>Psuedo User(Tenant Admin User)</span>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+
+                        <t t-foreach="users_inactive" t-as="user">
+                            <tr>
+                                <td>
+                                    <span>
+                                        <i class="fa fa-circle" style="color: red; "></i>
+                                    </span>
+                                </td>
+                                <td style="color:grey; font-style: italic;">
+                                    <t t-esc="user['name']"/>
+                                    <span
+                                            style="color:red; font-style: italic; font-size: 12px; margin-left: 10px;">
+                                        (Deactivated)
+                                    </span>
+                                </td>
+                                <td style="color:grey; font-style: italic;">
+                                    <t t-esc="user['login']"/>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </t>
+
+                    </tbody>
+                </table>
+            </div>
+        </xpath>
+    </template>
+</odoo>

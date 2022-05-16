@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="admin_notification_template" model="mail.template">
+          <field name="name">Admin Notification Template</field>
+          <field name="subject">Issue in New instance / Top Up Order Placing</field>
+          <field name="lang"></field>
+          <field name="auto_delete" eval="True"/>
+	  	  <field name="body_html">
+            <![CDATA[
+		   Hello <br/>
+        <p>There is some   in New instance / Top Up Order Placing.Recently "<Customer Name>" attempted to
+         place and order against <Database Name> but there are some issues encountered.
+         Following are the probable reasons :
+         <br/>1) Super admin credentials in Tenant Database is not matching to the one defined in Sassmaster db.</p><br/>
+         Kindly raise the invoice and  do the needful for the requested number of users.<br/>
+         Regards
+         Thank-you!
+	     ]]>
+	  </field>
+       </record>
+    </data>
+</odoo>

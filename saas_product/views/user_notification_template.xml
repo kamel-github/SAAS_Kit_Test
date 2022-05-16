@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="saas_user_increase_notification_template" model="mail.template">
+          <field name="name">User Increase/Decrease Notification Template</field>
+          <field name="subject">User Increase/Decrease Notification - {} Instance</field>
+          <field name="lang"></field>
+          <field name="auto_delete" eval="True"/>
+	  	  <field name="body_html">
+            <![CDATA[
+		   Hello <br/>
+        <p>This is to update you that, {} has recently {} the number of users  for {} Instance  by {} on {}.</p><br/>
+
+        
+        Regards
+        Thank-you!
+	    ]]>
+	  </field>
+       </record>
+    </data>
+</odoo>

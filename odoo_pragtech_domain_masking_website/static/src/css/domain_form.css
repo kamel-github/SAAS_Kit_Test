@@ -1,0 +1,54 @@
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  margin: auto;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content */
+.modal-content {
+  border-color: red green blue pink;
+  margin: auto;
+  padding: 20px;
+  width: 39%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.domain_btn{
+background-color: #4CAF50;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+border-radius: 2px;
+}
+#submit_btn{
+font-size: 18px;
+float:right;
+background-color: #4CAF50;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+border-radius: 2px;
+}
+#cancel_btn{
+background-color: #f44336;
+font-size: 18px;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+border-radius: 2px;
+float:left;
+
+}

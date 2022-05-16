@@ -1,0 +1,36 @@
+<odoo>
+     <record id="view_backup_inherited_config_form" model="ir.ui.view">
+         <field name="name">db.inherit.backup.form</field>
+         <field name="model">db.backup</field>
+         <field name="type">form</field>
+         <field name="inherit_id" ref="auto_backup.view_backup_config_form"/>
+         <field name="arch" type="xml">
+             <xpath expr="//field[@name='name']" position="replace">
+                 <field name="postgres_user"/>
+                 <field name="postgres_pwd" password = "True"/>
+             </xpath>
+             <xpath expr="//field[@name='port']" position="replace">
+                 <field name="postgres_port" />
+             </xpath>
+         </field>
+     </record>
+
+     <record id="view_backup_inherited_config_tree" model="ir.ui.view">
+         <field name="name">db.inherit.backup.tree</field>
+         <field name="model">db.backup</field>
+         <field name="type">tree</field>
+         <field name="inherit_id" ref="auto_backup.view_backup_config_tree"/>
+         <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+                 <field name="postgres_user"/>
+                 <field name="postgres_pwd" password = "True"/>
+             </xpath>
+             <xpath expr="//field[@name='port']" position="replace">
+                 <field name="postgres_port" />
+             </xpath>
+         </field>
+     </record>
+
+    <menuitem id="saas_service" name="My Service" sequence="1" web_icon="auto_backup_extension,static/description/icon.png"/>
+
+</odoo>

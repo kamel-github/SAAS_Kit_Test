@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_order_form_saas_sale">
+			<field name="name">view.order.for.saas.sale</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="saas_sale.view_order_form_saas_hide_confirm" />
+			<field name="arch" type="xml">
+				<field name="payment_term_id" position="after">
+					<field name="tenant_language"
+						attrs="{'required':[('saas_order','=', True)], 'invisible':[('saas_order','!=', True)]}"/>
+				</field>
+			</field>
+		</record>
+    </data>
+</odoo>

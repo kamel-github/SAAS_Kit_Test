@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="tenant_installed_module_tree">
+            <field name="name">Tenant Installed Modules tree View</field>
+            <field name="model">installed.tenant.module</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" string="Module Info">
+                    <field name="upgrade_bool" widget="checkbox"/>
+                    <field name="module_name"/>
+                    <field name="technical_name"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="tenant_db_upgrade_form">
+            <field name="name">Tenant Modules Upgrade View</field>
+            <field name="model">tenant.db.upgrade</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Module Info">
+                    <sheet>
+                        <group colspan="4" col="2">
+<!--                            <field name="tenant_db"/>-->
+                            <field name="tenant_db" widget="many2many_tags">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <button name="load_modules" type="object" string="Load Modules" class="btn btn-primary"/>
+                        </group>
+                        <notebook>
+                            <page string="Installed Modules">
+                                <field name="installed_modules" class="custom-control custom-checkbox"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                    <button name="upgrade" string="Upgrade" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="tenant_db_upgrade_action">
+            <field name="name">Tenant Module Upgrade</field>
+            <field name="res_model">tenant.db.upgrade</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help">Module Upgrade in Tenant Database.</field>
+        </record>
+        <menuitem id="menu_tenant_module_upgrade_main" name="Module Upgrade"
+                  parent="saas_base.saas_panel_main" sequence="8"/>
+
+        <menuitem id="menu_tenant_upgrade_module" name="Tenant DB Upgrade"
+                  parent="menu_tenant_module_upgrade_main" action="tenant_db_upgrade_action" sequence="2"/>
+    </data>
+</odoo>

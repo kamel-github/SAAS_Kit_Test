@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="product_inherit" inherit_id="website_sale.product">
+        <xpath expr="//a[@id='add_to_cart']" position="replace">
+            <a id="add_to_cart" invisible="True"/>
+        </xpath>
+    </template>
+<!--    <template id="details_inherit" inherit_id="website_sale.product">-->
+<!--        <xpath expr="//div[@id='product_details']/p[hasclass('text-muted')]" position="replace">-->
+<!--            <h1 invisible="True"></h1>-->
+<!--        </xpath>-->
+<!--    </template>-->
+    <template id="product_quantity_inherit" inherit_id="website_sale.product_quantity">
+        <xpath expr="//div[hasclass('input-group-prepend')]" position="replace">
+            <a invisible="True"></a>
+        </xpath>
+        <xpath expr="//input[@name='add_qty']" position="replace">
+            <a invisible="True"></a>
+        </xpath>
+        <xpath expr="//div[hasclass('input-group-append')]" position="replace">
+            <a invisible="True"></a>
+        </xpath>
+    </template>
+</odoo>

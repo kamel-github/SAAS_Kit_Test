@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="tenant_db_list" model="ir.ui.view">
+            <field name="name">tenant.dblist.form</field>
+            <field name="model">tenant.database.list</field>
+            <field name="inherit_id" ref="saas_base.saas_admin_dblist_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <!--                    <button type="action"-->
+                    <!--                            name="%(pragmatic_tenant_db_size_control.purchase_additional_space_action)d"-->
+                    <!--                            class="oe_highlight"-->
+                    <!--                            string="Purchase Additional Space"-->
+                    <!--                            attrs="{'invisible': [('purchase_space','=',False)]}"-->
+                    <!--                    />-->
+                    <!--                    <field name="purchase_space" attrs="{'invisible':True}" />-->
+
+                </xpath>
+<!--                <xpath expr="//notebook/page[1]/group" position="replace">-->
+<!--                    <group col="4">-->
+<!--                        <group colspan="2" col='1'>-->
+<!--                            <field name="deactivated_date"/>-->
+<!--                            <field name="user_id"/>-->
+<!--                            <field name="reason"/>-->
+<!--                        </group>-->
+<!--                        <group colspan="2" col="1">-->
+
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </xpath>-->
+                <xpath expr="//notebook" position="inside">
+                    <page string="Volume History" name="volume_history">
+                        <field name="volume_history">
+                            <tree>
+                                <field name="date"/>
+                                <field name="tenant_db_size"/>
+                                <field name="tenant_filestore_size"/>
+                            </tree>
+                        </field>
+                        <group col="4">
+                            <group colspan="2" col="1">
+                                <field name="total_db_size_used"/>
+                                <field name="total_filestore_size_used"/>
+                            </group>
+                            <group colspan="2" col="1">
+                                <field name="tenant_db_size"/>
+                                <field name="tenant_filestore_size"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="backup_volume_history" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">Saas Master : Tenant DB size update</field>
+            <field name="numbercall">-1</field>
+            <field name="priority">5</field>
+            <field name="doall">False</field>
+            <field name="active">True</field>
+            <field name="interval_number">10</field>
+            <field name="model_id" ref="model_tenant_database_list"/>
+            <field name="state">code</field>
+            <field name="code">model.schedule_volume_backup()</field>
+        </record>
+
+    </data>
+</odoo>
